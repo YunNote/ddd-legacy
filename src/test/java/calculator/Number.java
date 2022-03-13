@@ -15,16 +15,20 @@ import java.math.BigDecimal;
  */
 
 public class Number {
-    public static final Number ZERO = new Number("0");
-    private final int value;
+    public static final Number ZERO = new Number(0);
+    private int value;
+
+    public Number(int value) {
+        this.value = value;
+    }
 
     public Number(String value) {
+        this(Integer.parseInt(value));
         validate(value);
-        this.value = Integer.parseInt(value);
     }
 
     public Number plus(Number add) {
-        return new Number(String.valueOf(this.value + add.value()));
+        return new Number(this.value + add.value());
     }
 
     public int value() {
